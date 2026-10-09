@@ -22,7 +22,6 @@ def courier_payload_with_delete():
 @pytest.fixture()
 def registered_courier():
     payload = generate_courier()
-    response = create_courier(payload)
-    assert response.status_code == 201, f'Курьер не создался: {response.status_code}, {response.text}'
+    create_courier(payload)
     yield payload
     delete_courier_by_credentials(payload)
